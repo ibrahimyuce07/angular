@@ -1,0 +1,143 @@
+    01.OVERVIEW
+step 1: Create the TypeScript code
+    TypeScript files have the .ts extension
+
+step2: Compile the code
+    Web browsers do not understand TypeScript natively
+    Have to convert TypeScript code to JavaScript code
+    This is known as "transpiling" (translating/compiling)
+    Transpiling is accomplished with the "tsc" command
+
+step3: Run the code
+    To run JavaScript code, we use the node command
+    Run the generated JavaScript code (.js file)
+    
+    02.HELLO WORLD
+step1: hello world example:
+    "tsc myhelloworld.ts" to transpile code to js
+    "node myhelloworld.js" to run js code
+    only edit the .ts file
+    do not edit the .js file
+    .js generated every time by the TypeScript compiler
+
+    03.DEFINING VARIABLES
+step1: basic types:
+    boolean: true / false
+    number: supports integer and float numbers
+    string: text data, between " " or ' '
+    any: supports any data type
+step2: define variables
+    syntax:
+    let <variable_name>: <type> = <initial_value>;
+    example:
+    let found: boolean = true;
+    let grade: number = 88.6;
+    let firstName: string = "İbrahim";
+    let lastName: string = 'Yüce';
+step3: let keyword
+    we are using let keyword for variable declarations
+    as opposed to using traditional JavaScript var keyword
+    the JavaScript var keyword had a number of gotchas and pitfalls
+    scoping, capturing, shadowing etc.
+    TypeScript let keyword helps to eliminate those issues
+step4: any keyword
+    we can assign different values of any type
+    example:
+    let myData: any = 50.0;
+    myData = false;
+    myData = 'Eric';
+    myData = 19;
+    This is ok, but be careful, you lose type-safety.
+step5: displaying output
+    console.log("The grade is" + grade);
+    console.log(`The grade is ${grade}`)
+
+    04.CREATING LOOPS AND ARRAYS
+for loop syntax: 
+    for(let i=0; i<5; i++) {
+        console.log(i);
+    }
+
+array of numbers:
+    let reviews: number[] = [5, 5, 4.5, 1, 3];
+
+simplified for loop:
+    let sports: string[] = ["Golf", "Football", "Tennis"];
+    for (let tempSport of sports) {
+        console.log(tempSport);
+    }
+    this iterates every member of array:
+    Golf
+    Football
+    Tennis
+
+growable arrays:
+     let sports: string[] = ["Golf", "Football", "Tennis"];
+     sports.push("Baseball");
+     sports.push("Basketball");
+     
+     05. CREATING CLASSES
+step1: basic structure
+    class Customer {
+        //properties
+        firstName:string;
+        lastName:string;
+
+        //constructors
+        cunstructor(theFirst:string, theLast:string){
+        this.firstName = theFirst;
+        this.lastName = theLast;
+    }
+        //getter and setters
+    }
+step2: construct and instance
+    let myCustomer = new Customer();
+    myCustomer.firstName = "Martin";
+    myCustomer.lastName = "Freeman";
+
+step3: create a constructors
+    cunstructor(theFirst:string, theLast:string){
+        this.firstName = theFirst;
+        this.lastName = theLast;
+    }
+    //let's use this constructor
+    let myCustomer = new Customer("Martin", "Freeman");
+
+step4: access modifiers
+    public: property is accessible to all classes (default)
+    protected: property is only accessible in current class and subclasses
+    private: property is only accessible in current class
+
+step5: getter / setter methods
+    since our properties are private, we need a way to access them
+
+    public getFirstName():string {
+        return this.firstName;
+    }
+
+    public setFirstName(theFirst: string): void {
+        this.firstName = theFirst;
+    }
+
+step6: parameter properties
+    private _firstName:string;
+    private _lastName:string;
+
+    //define a constructor
+    constructor(theFirst:string, theLast:string){
+        this._firstName = theFirst;
+        this._lastName = theLast;
+    }
+
+    can be 
+
+     constructor(private _firstName:string,
+                private _lastName:string) {}
+
+step7: importing modules
+    Customer.ts
+    export class Customer
+    
+    Driver.ts
+    import {Customer} from "./Customer";
+    let myCustomer = new Customer("Martin", "Freeman"); 
